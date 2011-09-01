@@ -1,0 +1,14 @@
+--- GeoIP ---
+
+GeoIP use Google-Maps-for-Rails
+	GeoIP -> Location (model) -> GoogleMaps
+
+ model Location:
+   - coordinates:
+     - latitude
+     - longitude
+   - name
+   - url
+   - description
+
+On the map to display all the Locations collection
