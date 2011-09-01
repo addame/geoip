@@ -4,10 +4,10 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.string :address
-      t.float :latitude
-      t.float :longitude
+      t.float :users, :latitude
+      t.float :users, :longitude
       t.string :description
-
+      t.boolean :users, :gmaps
       t.timestamps
     end
   end
