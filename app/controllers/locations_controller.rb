@@ -4,6 +4,8 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.all
     @json = Location.all.to_gmaps4rails
+    request.remote_ip
+    @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @locations }
