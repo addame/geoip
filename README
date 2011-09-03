@@ -12,3 +12,6 @@ GeoIP use Google-Maps-for-Rails
      - longitude
    - description
 On the map to display all the Locations collection
+
+See our location here http://geoip-rails.heroku.com/me
+See all the Locations collection http://geoip-rails.heroku.com/

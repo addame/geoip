@@ -31,4 +31,4 @@
 <br />
 
 <%= link_to 'New Location', new_location_path %>
-<%= gmaps4rails(@json) %>
+<%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true },"markers" => { "data" => @json }) %>
