@@ -13,4 +13,4 @@
   <b>Longitude:</b>
   <%= @location.longitude %>
 </p>
-<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 10, "auto_zoom" => false },"markers" => { "data" => @json }) %>
+<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 5, "auto_zoom" => false },"markers" => { "data" => @json }) %>
