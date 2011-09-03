@@ -1,3 +1,22 @@
+GIT
+  remote: git://github.com/heroku/heroku.git
+  revision: 52550d0f050ad3c1bb7857a6da520ef08a02cf29
+  specs:
+    heroku (2.6.1)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      rubyzip
+      term-ansicolor (~> 1.0.5)
+
+GIT
+  remote: git://github.com/sstephenson/sprockets.git
+  revision: d4103abb784e8209e406bf5e8fc8dfa4971bfbf9
+  specs:
+    sprockets (2.0.0)
+      hike (~> 1.2)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -30,6 +49,7 @@ GEM
       activesupport (= 3.1.0.rc8)
     activesupport (3.1.0.rc8)
       multi_json (~> 1.0)
+    addressable (2.2.6)
     ansi (1.3.0)
     arel (2.2.1)
     bcrypt-ruby (3.0.0)
@@ -53,6 +73,8 @@ GEM
     jquery-rails (1.0.13)
       railties (~> 3.0)
       thor (~> 0.14)
+    launchy (2.0.5)
+      addressable (~> 2.2.6)
     libv8 (3.3.10.2)
     mail (2.3.0)
       i18n (>= 0.4.0)
@@ -60,6 +82,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    pg (0.11.0)
     polyglot (0.3.2)
     rack (1.3.2)
     rack-cache (1.0.3)
@@ -87,16 +110,16 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.2)
     rdoc (3.9.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rubyzip (0.9.4)
     sass (3.1.7)
     sass-rails (3.1.0.rc.7)
       actionpack (~> 3.1.0.rc6)
       railties (~> 3.1.0.rc6)
       sass (>= 3.1.4)
-    sprockets (2.0.0)
-      hike (~> 1.2)
-      rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
     sqlite3 (1.3.4)
+    term-ansicolor (1.0.6)
     therubyracer (0.9.4)
       libv8 (~> 3.3.10)
     thor (0.14.6)
@@ -118,9 +141,12 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   geocoder
   gmaps4rails
+  heroku!
   jquery-rails
+  pg
   rails (= 3.1.0.rc8)
   sass-rails (~> 3.1.0.rc)
+  sprockets!
   sqlite3
   therubyracer
   turn

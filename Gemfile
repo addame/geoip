@@ -9,6 +9,11 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'gmaps4rails'
 gem 'geocoder'
+
+#for heroku
+gem 'heroku', :git => 'git://github.com/heroku/heroku.git'
+gem 'sprockets', :git => 'git://github.com/sstephenson/sprockets.git'
+gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
