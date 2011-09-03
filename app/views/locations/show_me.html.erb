@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>IP Address:</b>
+  <%= @location.ip_address %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @location.latitude %>
+<p>
+<p>
+  <b>Longitude:</b>
+  <%= @location.longitude %>
+</p>
+<%= gmaps4rails(@json) %>

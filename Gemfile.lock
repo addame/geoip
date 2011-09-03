@@ -45,6 +45,7 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
+    geocoder (1.0.2)
     gmaps4rails (1.0.2)
       crack
     hike (1.2.1)
@@ -115,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
+  geocoder
   gmaps4rails
   jquery-rails
   rails (= 3.1.0.rc8)
