@@ -31,4 +31,5 @@
 <br />
 
 <%= link_to 'New Location', new_location_path %>
-<%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true },"markers" => { "data" => @json }) %>
+<%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => "true" },"markers" => { "data" => @json, "options" => {"list_container" => "markers_list" } }) %>
+<ul id="markers_list">  </ul>
