@@ -3,12 +3,17 @@ class LocationsController < ApplicationController
   def show_me
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     @location = Location.create(:ip_address => "#{request.remote_ip}", :adress => '')
-    #@location = Location.create(:ip_address => "212.69.208.218")
     @json = @location.to_gmaps4rails
     respond_to do |format|
       format.html # show_me.html.erb
       format.json { render json: @location }
     end
+  end
+  def get_me
+    @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
+    @location = Location.create(:ip_address => "#{request.remote_ip}", :adress => '')
+    @json = @locations.to_gmaps4rails
+    respond_with(@json)
   end
   def relace_markers 
     @locations = Location.all
