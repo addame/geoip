@@ -9,11 +9,13 @@
         });
       });		
     });
-    var get_me = $(function(){
-      $.getJSON("/get_me", function(data){
-        Gmaps.map.addMarkers(data);
-      });
-    });               
+    function get_me(){
+      get_me = $(function(){
+        $.getJSON("/get_me", function(data){
+          Gmaps.map.addMarkers(data);
+        });
+      });               
+     }
   </script>
 <% end %>
 <h1>Listing locations</h1>
