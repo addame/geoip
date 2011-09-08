@@ -1,7 +1,6 @@
 class Location < ActiveRecord::Base
   attr_accessible :ip_address, :address, :name, :description
   validates :address, :presence => true
-
   acts_as_gmappable
   def gmaps4rails_address
     "#{self.address}" 
@@ -15,6 +14,22 @@ class Location < ActiveRecord::Base
   def gmaps4rails_sidebar
     "#{self.name}" 
   end
+
+  def gmaps4rails_marker_picture
+    if self.name.eql?("me")
+      {
+        "picture" => "/images/blue-marker.png",
+        "width" => "25",
+        "height" => "35",
+      }
+    else
+      {
+        "picture" => "/images/marker.png",
+	"width" => "25",
+	"height" => "35",
+      }
+    end
+  end  
 
   geocoded_by :ip_address  
   after_validation :geocode

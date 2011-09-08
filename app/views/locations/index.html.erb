@@ -1,16 +1,3 @@
-<% content_for :scripts do %>
-  <script type="text/javascript" charset="utf-8">
-    $(function(){
-      $("#replace_markers").click(function(){
-        $.getJSON("/markers", function(data){
-	  Gmaps.map.map_options.auto_adjust = false;
-          Gmaps.map.replaceMarkers(data);	
-	  Gmaps.map.addMarkers(data);
-        });
-      });		
-    });
-  </script>
-<% end %>
 <h1>Listing locations</h1>
 
 <table>
