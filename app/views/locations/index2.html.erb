@@ -1,4 +1,4 @@
-<h1>Listing locations</h1>
+<h1>Nearby locations</h1>
 <%= form_tag '/', :method => :get do %>
   <p>
     <%= text_field_tag :radius, params[:radius] %>
@@ -34,7 +34,8 @@
 </table>
 
 <br />
-
-<%= link_to 'New Location', new_location_path %>
+<p>
+  <%= submit_tag "Add All", :name => nil, :id => "replace_markres" %>
+</p>
 
 <%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => "false" },"markers" => { "data" => @json }) %>

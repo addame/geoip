@@ -9,12 +9,18 @@ class LocationsController < ApplicationController
       format.json { render json: @location }
     end
   end
+  def relace_markers
+    @locations = Location.all
+    @json = @locations.to_gmaps4rails
+    respond_with(@json)
+  end
   def index2
     radius = 50
     radius = params[:radius].to_i if params[:radius].present?
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     @location_old = Location.find(:first, :conditions => ["name = :u", :u => 'my position'])
     @location_old.destroy if @location_old.present?
+    #@location = Location.new(:ip_address => "77.47.200.1", :address => 'me', :name => "my position")
     @location = Location.new(:ip_address => "#{request.remote_ip}", :address => 'me', :name => "my position")
     @location.save
     @location_near = Location.near(Geocoder.search("#{@location.latitude}, #{@location.longitude}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)
