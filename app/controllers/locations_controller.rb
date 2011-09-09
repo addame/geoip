@@ -12,6 +12,7 @@ class LocationsController < ApplicationController
   def index2
     radius = 50
     radius = params[:radius].to_i if params[:radius].present?
+    @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     @location = Location.find_or_create_by_name(:ip_address => "#{request.remote_ip}", :address => 'my position', :name => "my position")
     #@location = Location.find_or_create_by_name(:ip_address => "77.47.200.1", :address => 'my position', :name => "my position")
     @location_near = Location.near(Geocoder.search("#{@location.latitude}, #{@location.longitude}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)
