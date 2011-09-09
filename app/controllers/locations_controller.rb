@@ -13,11 +13,16 @@ class LocationsController < ApplicationController
     radius = 50
     radius = params[:radius].to_i if params[:radius].present?
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @location = Location.find_or_create_by_name(:ip_address => "#{request.remote_ip}", :address => 'my position', :name => "my position")
-    #@location = Location.find_or_create_by_name(:ip_address => "77.47.200.1", :address => 'my position', :name => "my position")
-    logger.info "!!!!!"+@location.latitude.to_s+" "+@location.longitude.to_s
+    #@location = Location.find_or_create_by_name(:ip_address => "#{request.remote_ip}", :address => 'me', :name => "me")
+    #@location = Location.find_or_create_by_name(:ip_address => "77.47.200.1", :address => 'me', :name => "me")
+
+    @location = Location.find(:first, :conditions => ["name = :u", :u => 'my position'])
+    unless @location.present?
+      @location = Location.new(:ip_address => "#{request.remote_ip}", :address => 'me', :name => "my position")
+      @location.save
+    end  
+    logger.info @location.inspect
     @location_near = Location.near(Geocoder.search("#{@location.latitude}, #{@location.longitude}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)
-    logger.info "!!!!!!!!!!!"+@location.inspect
     @json = @location_near.to_gmaps4rails
     respond_with(@json)
   end

@@ -16,7 +16,7 @@ class Location < ActiveRecord::Base
   end
 
   def gmaps4rails_marker_picture
-    if self.name.eql?("me")
+    if self.name.eql?('my position')
       {
         "picture" => "/images/blue-marker.png",
         "width" => "25",
