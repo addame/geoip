@@ -9,17 +9,17 @@ class LocationsController < ApplicationController
       format.json { render json: @location }
     end
   end
-  def get_me
-    @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @location = Location.create(:ip_address => "#{request.remote_ip}", :adress => '', :name => "me")
-    @json = @location.to_gmaps4rails
+  def index2
+    radius = 50
+    radius = params[:radius].to_i if params[:radius].present?
+    @location = Location.find_or_create_by_name(:ip_address => "#{request.remote_ip}", :address => 'my position', :name => "my position")
+    #@location = Location.find_or_create_by_name(:ip_address => "77.47.200.1", :address => 'my position', :name => "my position")
+    @location_near = Location.near(Geocoder.search("#{@location.latitude}, #{@location.longitude}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)
+    logger.info @location_near.inspect
+    @json = @location_near.to_gmaps4rails
     respond_with(@json)
   end
-  def relace_markers 
-    @locations = Location.all
-    @json = @locations.to_gmaps4rails
-    respond_with(@json)
-  end
+
   # GET /locations
   # GET /locations.json
   def index
