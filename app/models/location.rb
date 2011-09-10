@@ -12,7 +12,7 @@ class Location < ActiveRecord::Base
     id.to_s
   end
   def gmaps4rails_sidebar
-    "#{self.name}" 
+    "#{self.description}" 
   end
 
   def gmaps4rails_marker_picture

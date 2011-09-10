@@ -3,6 +3,7 @@
   <p>
     <%= text_field_tag :radius, params[:radius] %>
     <%= submit_tag "Set Radius", :name => nil %>
+    <%= submit_tag "Show All Locations", :name => nil, :id => "replace_markres" %>
   </p>
 <% end %>
 <table>
@@ -34,8 +35,13 @@
 </table>
 
 <br />
-<p>
-  <%= submit_tag "Show All Locations", :name => nil, :id => "replace_markres" %>
-</p>
-
-<%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => "false" },"markers" => { "data" => @json }) %>
+<table>
+  <tr>
+    <td>
+      <td><%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => "false" },"markers" => { "data" => @json }) %>
+    </td>
+    <td  valign="top">
+      <h2>Description:</h2><textarea id="dsct" name="description" cols="40" rows="10"></textarea>
+    </td>
+  </tr>
+</table>
