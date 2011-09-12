@@ -143,6 +143,6 @@ DEPENDENCIES
   sass-rails (~> 3.1.0.rc)
   sprockets
   sqlite3
-  therubyracer
+  therubyracer (~> 0.9.3.beta1)
   turn
   uglifier

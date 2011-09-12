@@ -2,8 +2,8 @@
 <%= form_tag '/', :method => :get do %>
   <p>
     <%= text_field_tag :radius, params[:radius] %>
-    <%= submit_tag "Set Radius", :name => nil %>
-    <%= submit_tag "Show All Locations", :name => nil, :id => "replace_markres" %>
+    <%= submit_tag "Set Radius", :name => nil, :type => "submit" %>
+    <%= submit_tag "Show All Locations", :name => nil, :id => "replace_markres", :type => "button" %>
   </p>
 <% end %>
 <table>

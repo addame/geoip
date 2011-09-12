@@ -1,7 +1,8 @@
 $(function(){
-  $("#replace_markres").click(function(){
+  $("input#replace_markres").click(function(){
     $.getJSON("/markers", function(data){
       Gmaps.map.replaceMarkers(data);
+      Gmaps.map.callback();
     });
   });
   Gmaps.map.callback = function() {

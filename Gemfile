@@ -6,7 +6,7 @@ gem 'rails', '3.1.0.rc8'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'therubyracer'
+gem 'therubyracer', '~> 0.9.3.beta1'
 gem 'gmaps4rails'
 gem 'geocoder'
 
