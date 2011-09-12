@@ -12,12 +12,14 @@ $(function(){
      }
   };
   function getDsctMarker(obj){
-    for ( var j = 0; j <  Gmaps.map.markers.length; ++j) {
-      var lat =  Gmaps.map.markers[j].lat;
-      var lng =  Gmaps.map.markers[j].lng;
-      var lt = Math.round(obj.latLng['Pa']*100000000)/100000000;
-      var lg = Math.round(obj.latLng['Qa']*100000000)/100000000;
-      if ( lt == lat && lg == lng) $("#dsct").val(""+Gmaps.map.markers[j].sidebar);
-    }
+      var lt = Math.round(obj.latLng['Pa']*10000)/10000;
+      var lg = Math.round(obj.latLng['Qa']*10000)/10000;
+      $.getJSON("/markers", function(data){
+	for ( var j = 0; j <  data.length; ++j) {
+	   var lat = Math.round(data[j].lat*10000)/10000;
+	   var lng = Math.round(data[j].lng*10000)/10000;
+	   if ( lt == lat && lg == lng) $("#dsct").val(""+data[j].sidebar);
+	}
+      });
   }
 });

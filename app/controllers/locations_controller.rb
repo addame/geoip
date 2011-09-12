@@ -12,14 +12,13 @@ class LocationsController < ApplicationController
   def relace_markers
     @locations = Location.all
     @json = @locations.to_gmaps4rails
-    respond_with(@json)
+    respond_with @json
   end
   def index2
     radius = 50
     radius = params[:radius].to_i if params[:radius].present?
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     @location_old = Location.where("name = 'my position'").first
-    #@location_old = Location.find(:first, :conditions => ["name = :u", :u => 'my position'])
     @location_old.destroy if @location_old.present?
     @location = Location.new(:ip_address => "77.47.200.1", :address => 'me', :name => "my position")
     #@location = Location.new(:ip_address => "#{request.remote_ip}", :address => 'me', :name => "my position")
@@ -32,7 +31,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @location_old = Location.find(:first, :conditions => ["name = :u", :u => 'my position'])
+    @location_old = Location.where("name = 'my position'").first
     @location_old.destroy if @location_old.present?
     @locations = Location.all
     @json = @locations.to_gmaps4rails
@@ -111,4 +110,5 @@ class LocationsController < ApplicationController
       format.json { head :ok }
     end
   end
+
 end
