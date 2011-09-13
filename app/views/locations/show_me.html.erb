@@ -1,16 +1,48 @@
-<p id="notice"><%= notice %></p>
+<h1>Nearby locations</h1>
+<%= form_tag '/', :method => :get do %>
+  <p>
+    <%= text_field_tag :radius  %><br>
+    <%= submit_tag "Set Radius", :name => nil, :id => "set_radius", :type => "button" %>
+    <%= submit_tag "Show All Locations", :name => nil, :id => "replace_markres", :type => "button" %>
+  </p>
+<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>IP Address</th>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<p>
-  <b>IP Address:</b>
-  <%= @location.ip_address %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @location.latitude %>
-<p>
-<p>
-  <b>Longitude:</b>
-  <%= @location.longitude %>
-</p>
-<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 5, "auto_zoom" => false },"markers" => { "data" => @json }) %>
+<% @locations.each do |loc| %>
+  <tr>
+    <td><%= loc.name %></td>
+    <td><%= loc.ip_address %></td>
+    <td><%= loc.address %></td>
+    <td><%= loc.latitude %></td>
+    <td><%= loc.longitude %></td>
+    <td><%= loc.description %></td>
+    <td><%= link_to 'Show', loc %></td>
+    <td><%= link_to 'Edit', edit_location_path(loc) %></td>
+    <td><%= link_to 'Destroy', loc, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div id="lat" style="width:0px;height:0px;overflow:hidden;"> <%= @locations.first.latitude %> </div>
+<div id="lng" style="width:0px;height:0px;overflow:hidden;"> <%= @locations.first.longitude %> </div>
+<br />
+<table>
+  <tr>
+    <td>
+      <td><%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => "false" },"markers" => { "data" => @json }) %>
+    </td>
+    <td  valign="top">
+      <h2>Description:</h2><textarea id="dsct" name="description" cols="40" rows="10"></textarea>
+    </td>
+  </tr
+</table>

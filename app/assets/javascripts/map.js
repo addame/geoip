@@ -1,10 +1,19 @@
 $(function(){
+  var lantitude;
+  var longitude;
   $("input#replace_markres").click(function(){
     $.getJSON("/markers", function(data){
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
     });
   });
+  $("input#set_radius").click(function(){
+    $.getJSON("/near", { radius: $("input#radius").val(), lat: lantitude, lng: longitude }, function(data){
+      Gmaps.map.replaceMarkers(data);
+      Gmaps.map.callback();
+    });
+  });
+
   Gmaps.map.callback = function() {
     for (var i = 0; i <  this.markers.length; ++i) {
       google.maps.event.addListener( Gmaps.map.markers[i].serviceObject, 'click', function(obj) {
@@ -23,4 +32,8 @@ $(function(){
 	}
       });
   }
+  $(window).ready(function(){
+    lantitude = $("div#lat").text(); 
+    longitude = $("div#lng").text();
+  });
 });
