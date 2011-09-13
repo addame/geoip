@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'therubyracer', '~> 0.9.3.beta1'
 gem 'gmaps4rails'
 gem 'geocoder'
-
+gem 'underscore'
 #for heroku
 gem 'heroku', :git => 'git://github.com/heroku/heroku.git'
 gem 'sprockets'

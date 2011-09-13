@@ -5,8 +5,31 @@ $(function(){
     $.getJSON("/markers", function(data){
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
+      getList();
     });
   });
+  var getList = function(){
+    $.getJSON("/locations", function(data){
+      if(!($("div#tab table").empty()))$("div#tab table").remove(":contains('tr')");
+      for (var i = 0; i <  data.length; ++i) {
+        $("div#tab table").append(template(data[i]));      
+      }
+    });
+  }
+  var template = function(loc){
+    var txt = "<tr><td>"+ loc.name+"</td>";
+    txt += "<td>"+loc.ip_address +"</td>";
+    txt += "<td>"+ loc.address +"</td>";
+    txt += "<td>"+ loc.latitude +"</td>";
+    txt += "<td>"+ loc.longitude +"</td>";
+    txt += "<td>"+ loc.description +"</td>";
+    txt += "<td>Show'</td>";
+    txt += "<td>Edit</td>";
+    txt += "<td>Destroy</td>";
+    txt += "</tr>";
+    console.log(txt);
+    return txt;
+  }
   $("input#set_radius").click(function(){
     $.getJSON("/near", { radius: $("input#radius").val(), lat: lantitude, lng: longitude }, function(data){
       Gmaps.map.replaceMarkers(data);
