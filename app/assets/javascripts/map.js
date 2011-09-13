@@ -28,6 +28,8 @@ $(function(){
 	for ( var j = 0; j <  data.length; ++j) {
 	   var lat = Math.round(data[j].lat*10000)/10000;
 	   var lng = Math.round(data[j].lng*10000)/10000;
+	   console.log(lt+", "+lat);
+	   console.log(lg+", "+lng);
 	   if ( lt == lat && lg == lng) $("#dsct").val(""+data[j].sidebar);
 	}
       });
