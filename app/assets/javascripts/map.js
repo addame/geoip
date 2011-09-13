@@ -18,18 +18,17 @@ $(function(){
     for (var i = 0; i <  this.markers.length; ++i) {
       google.maps.event.addListener( Gmaps.map.markers[i].serviceObject, 'click', function(obj) {
         getDsctMarker(obj);
+	//console.log(obj)
       });
      }
   };
   function getDsctMarker(obj){
-      var lt = Math.round(obj.latLng['Pa']*10000)/10000;
-      var lg = Math.round(obj.latLng['Qa']*10000)/10000;
+      var lt = Math.round(obj.latLng['Ka']*10000)/10000;
+      var lg = Math.round(obj.latLng['La']*10000)/10000;
       $.getJSON("/markers", function(data){
 	for ( var j = 0; j <  data.length; ++j) {
 	   var lat = Math.round(data[j].lat*10000)/10000;
 	   var lng = Math.round(data[j].lng*10000)/10000;
-	   console.log(lt+", "+lat);
-	   console.log(lg+", "+lng);
 	   if ( lt == lat && lg == lng) $("#dsct").val(""+data[j].sidebar);
 	}
       });
