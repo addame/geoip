@@ -1,8 +1,8 @@
 Geoip::Application.routes.draw do
   resources :locations
-  root :to => 'locations#show_me'
-  match '/markers' => 'locations#relace_markers'
-  match '/near' => 'locations#get_nearby'
+  root :to => 'home#index'
+  match '/locations/:id/search' => 'locations#search'
+  match '/locations/:id/my' => 'locations#my_location'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

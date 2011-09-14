@@ -1,46 +1,35 @@
 class LocationsController < ApplicationController
   respond_to :json, :html
-  def show_me
+
+  def my_location
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @location_old = Location.where("name = 'my position'").first
-    @location_old.destroy if @location_old.present?
-    #@location = Location.new(:ip_address => "77.47.200.1", :address => "me", :name => "my position")
-    @location = Location.new(:ip_address => "#{request.remote_ip}", :address => "me", :name => "my position")
-    @location.save
-    @locations = []
-    @locations << @location
-    @json = @locations.to_gmaps4rails
+    @location = Location.new(:ip_address => "62.205.139.59", :address => "me", :name => "my position")
+    #@location = Location.new(:ip_address => "#{request.remote_ip}", :address => "me", :name => "my position")
+    @json = @location.get_my_position_to_json
     respond_with(@json)
   end
-  def relace_markers
-    @locations = Location.all
-    @json = @locations.to_gmaps4rails
-    respond_with @json
-  end
-  def get_nearby
-    radius = 50
-    radius = params[:radius].to_i if params[:radius].present?
-    @location_near = Location.near(Geocoder.search("#{params[:lat]}, #{params[:lng]}")[0].data["formatted_address"],     (radius*2)/3, :order => :distance)
+
+  def search 
+    @location_near = Location.new.get_near(params[:radius].to_i, params[:lat], params[:lng])
     @json = @location_near.to_gmaps4rails
     respond_with(@json)
   end
+
   # GET /locations
   # GET /locations.json
   def index
-    @location_old = Location.where("name = 'my position'").first
-    @location_old.destroy if @location_old.present?
     @locations = Location.all
     @json = @locations.to_gmaps4rails
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @locations }
+      format.json { render json: @locations.to_gmaps4rails }
     end
   end
+
   # GET /locations/1
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @location }

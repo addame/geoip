@@ -1,20 +1,26 @@
 $(function(){
   var lantitude;
   var longitude;
-  $("input#replace_markres").click(function(){
-    $.getJSON("/markers", function(data){
+  $("input#show_me").click(function(){
+    $.getJSON("/locations/0/my", function(data){
+      console.log(data);
       Gmaps.map.replaceMarkers(data);
-      Gmaps.map.callback();
-      getList();
+      //Gmaps.map.callback();
     });
   });
-  var getList = function(){
+
+  $("input#replace_markres").click(function(){
     $.getJSON("/locations", function(data){
-      if(!($("div#tab table").empty()))$("div#tab table").remove(":contains('tr')");
-      for (var i = 0; i <  data.length; ++i) {
-        $("div#tab table").append(template(data[i]));      
-      }
+      Gmaps.map.replaceMarkers(data);
+      Gmaps.map.callback();
+      //getList(data);
     });
+  });
+  var getList = function(data){
+    if(!($("div#tab table").empty()))$("div#tab table").remove(":contains('tr')");
+    for (var i = 0; i <  data.length; ++i) {
+      $("div#tab table").append(template(data[i]));      
+    }
   }
   var template = function(loc){
     var txt = "<tr><td>"+ loc.name+"</td>";
@@ -31,7 +37,7 @@ $(function(){
     return txt;
   }
   $("input#set_radius").click(function(){
-    $.getJSON("/near", { radius: $("input#radius").val(), lat: lantitude, lng: longitude }, function(data){
+    $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: lantitude, lng: longitude }, function(data){
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
     });
@@ -48,7 +54,7 @@ $(function(){
   function getDsctMarker(obj){
       var lt = Math.round(obj.latLng['Ka']*10000)/10000;
       var lg = Math.round(obj.latLng['La']*10000)/10000;
-      $.getJSON("/markers", function(data){
+      $.getJSON("/locations", function(data){
 	for ( var j = 0; j <  data.length; ++j) {
 	   var lat = Math.round(data[j].lat*10000)/10000;
 	   var lng = Math.round(data[j].lng*10000)/10000;

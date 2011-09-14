@@ -30,7 +30,18 @@ class Location < ActiveRecord::Base
       }
     end
   end  
-
   geocoded_by :ip_address  
   after_validation :geocode
+
+  def get_my_position_to_json
+    data = []
+    self.save
+    data << {:description => "<h1>my position</h1>", :sidebar => "", :lng => "#{self.latitude}", :lat => "#{self.longitude}", :picture => "/images/blue-marker.png", :width => "25", :height => "35"}
+    self.destroy
+    return data
+  end
+  def get_near(radius, lat, lng)
+    radius = 50 unless radius
+    return Location.near(Geocoder.search("#{lat}, #{lng}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)
+  end
 end
