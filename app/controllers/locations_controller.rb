@@ -3,8 +3,8 @@ class LocationsController < ApplicationController
 
   def my_location
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @location = Location.new(:ip_address => "62.205.139.59", :address => "me", :name => "my position")
-    #@location = Location.new(:ip_address => "#{request.remote_ip}", :address => "me", :name => "my position")
+    #@location = Location.new(:ip_address => "62.205.139.59", :address => "me", :name => "my position")
+    @location = Location.new(:ip_address => "#{request.remote_ip}", :address => "me", :name => "my position")
     @json = @location.get_my_position_to_json
     respond_with(@json)
   end
