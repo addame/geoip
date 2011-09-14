@@ -1,43 +1,18 @@
 $(function(){
-  var lantitude;
-  var longitude;
   $("input#show_me").click(function(){
     $.getJSON("/locations/0/my", function(data){
-      console.log(data);
       Gmaps.map.replaceMarkers(data);
-      //Gmaps.map.callback();
+      Gmaps.map.callback();
     });
   });
-
   $("input#replace_markres").click(function(){
     $.getJSON("/locations", function(data){
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
-      //getList(data);
     });
   });
-  var getList = function(data){
-    if(!($("div#tab table").empty()))$("div#tab table").remove(":contains('tr')");
-    for (var i = 0; i <  data.length; ++i) {
-      $("div#tab table").append(template(data[i]));      
-    }
-  }
-  var template = function(loc){
-    var txt = "<tr><td>"+ loc.name+"</td>";
-    txt += "<td>"+loc.ip_address +"</td>";
-    txt += "<td>"+ loc.address +"</td>";
-    txt += "<td>"+ loc.latitude +"</td>";
-    txt += "<td>"+ loc.longitude +"</td>";
-    txt += "<td>"+ loc.description +"</td>";
-    txt += "<td>Show'</td>";
-    txt += "<td>Edit</td>";
-    txt += "<td>Destroy</td>";
-    txt += "</tr>";
-    console.log(txt);
-    return txt;
-  }
   $("input#set_radius").click(function(){
-    $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: lantitude, lng: longitude }, function(data){
+    $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: dat.lat, lng: dat.lng }, function(data){
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
     });
@@ -47,7 +22,6 @@ $(function(){
     for (var i = 0; i <  this.markers.length; ++i) {
       google.maps.event.addListener( Gmaps.map.markers[i].serviceObject, 'click', function(obj) {
         getDsctMarker(obj);
-	//console.log(obj)
       });
      }
   };
@@ -62,8 +36,10 @@ $(function(){
 	}
       });
   }
-  $(window).ready(function(){
-    lantitude = $("div#lat").text(); 
-    longitude = $("div#lng").text();
+  var dat;
+  $(document).ready(function(){
+    $.getJSON("/locations/0/my", function(data){
+      dat = data[0];
+    });
   });
 });

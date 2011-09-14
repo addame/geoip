@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @locations = Location.all
-    @json = @locations.to_gmaps4rails
+    @json = Location.all.to_gmaps4rails
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @locations }
