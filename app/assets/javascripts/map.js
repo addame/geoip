@@ -7,12 +7,14 @@ $(function(){
   });
   $("input#replace_markres").click(function(){
     $.getJSON("/locations", function(data){
+      data.push(dat);
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
     });
   });
   $("input#set_radius").click(function(){
     $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: dat.lat, lng: dat.lng }, function(data){
+      data.push(dat);
       Gmaps.map.replaceMarkers(data);
       Gmaps.map.callback();
     });

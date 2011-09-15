@@ -36,7 +36,7 @@ class Location < ActiveRecord::Base
   def get_my_position_to_json
     data = []
     self.save
-    data << {:description => "<h1>my position</h1>", :sidebar => "", :lng => "#{self.latitude}", :lat => "#{self.longitude}", :picture => "/images/blue-marker.png", :width => "25", :height => "35"}
+    data << {:description => "<h1>my position</h1>", :sidebar => "", :lat => "#{self.latitude}", :lng => "#{self.longitude}", :picture => "/images/blue-marker.png", :width => "25", :height => "35"}
     self.destroy
     return data
   end
