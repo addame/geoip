@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/heroku/heroku.git
-  revision: 792788bf7852db6df8f30f1dea89a9f6c94e049f
+  revision: 8aa0ee9d1ef9186630b2478c279b9fcb10ea54ed
   specs:
-    heroku (2.7.0)
+    heroku (2.8.0)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       rubyzip
@@ -52,12 +52,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
-    crack (0.1.8)
+    crack (0.3.0)
     erubis (2.7.0)
-    execjs (1.2.5)
+    execjs (1.2.7)
       multi_json (~> 1.0)
-    geocoder (1.0.2)
-    gmaps4rails (1.1.4)
+    geocoder (1.0.4)
+    gmaps4rails (1.1.5)
       crack
     hike (1.2.1)
     i18n (0.6.0)
@@ -75,7 +75,7 @@ GEM
     multi_json (1.0.3)
     pg (0.11.0)
     polyglot (0.3.2)
-    rack (1.3.2)
+    rack (1.3.3)
     rack-cache (1.0.3)
       rack (>= 0.4)
     rack-mount (0.8.3)
