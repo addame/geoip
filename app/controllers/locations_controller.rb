@@ -1,14 +1,5 @@
 class LocationsController < ApplicationController
   respond_to :json, :html
-
-  def my_location
-    @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @location = Location.new(:ip_address => "77.47.200.1", :address => "me", :name => "my position")
-    #@location = Location.new(:ip_address => "#{request.remote_ip}", :address => "me", :name => "my position")
-    @json = @location.get_my_position_to_json
-    respond_with(@json)
-  end
-
   def search 
     @location_near = Location.new.get_near(params[:radius].to_i, params[:lat].to_i, params[:lng].to_i)
     @json = @location_near.to_gmaps4rails

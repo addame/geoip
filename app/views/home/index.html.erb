@@ -1,10 +1,4 @@
 <script type="text/javascript" src="http://j.maxmind.com/app/geoip.js"></script>
-<script>
-  var latIP = geoip_latitude();
-  var lonIP = geoip_longitude();
-  console.log(latIP, lonIP);
-
-</script>
 <h1>Nearby locations</h1>
 <%= form_tag '/', :method => :get do %>
   <p>
