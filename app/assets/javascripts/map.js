@@ -26,7 +26,7 @@ $(function(){
      }
   };
   function getDsctMarker(obj){
-      //console.log(obj.latLng);
+      //console.log( obj.latLng);
       var lt = Math.round(obj.latLng['Ja']*10000)/10000;
       var lg = Math.round(obj.latLng['Ka']*10000)/10000;
       $.getJSON("/locations", function(data){
@@ -36,6 +36,8 @@ $(function(){
 	   if ( lt == lat && lg == lng) $("#dsct").val(""+data[j].sidebar);
 	}
       });
+  }
+  function getLatLng(obj){
   }
   var dat;
   $(document).ready(function(){

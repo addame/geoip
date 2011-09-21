@@ -31,7 +31,7 @@ class Location < ActiveRecord::Base
     end
   end  
   after_validation :geocode
-  geocoded_by :ip_address
+  geocoded_by :address
   def get_near(radius, lat, lng)
     radius = 50 unless radius
     return Location.near(Geocoder.search("#{lat}, #{lng}")[0].data["formatted_address"], (radius*2)/3, :order => :distance)

@@ -1,11 +1,10 @@
 --- GeoIP ---
 
 GeoIP use Google-Maps-for-Rails
-	GeoIP -> Location (model) -> GoogleMaps
+	Location (model) -> GoogleMaps
 
  model Location:
    - name
-   - url
    - address
    - coordinates:
      - latitude
@@ -13,6 +12,5 @@ GeoIP use Google-Maps-for-Rails
    - description
 On the map to display all the Locations collection
 
-See our location here http://geoip-rails.heroku.com/me
-See all the Locations collection http://geoip-rails.heroku.com/locations
-See our and other location, set radius view 
+See location here http://geoip-rails.heroku.com
+Edit locations collection http://geoip-rails.heroku.com/locations

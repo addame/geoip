@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20110901114344) do
 
   create_table "locations", :force => true do |t|
     t.string   "name"
-    t.string   "ip_address"
     t.string   "address"
     t.float    "users"
     t.float    "latitude"
