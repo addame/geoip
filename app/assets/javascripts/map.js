@@ -41,16 +41,18 @@ $(function(){
   }
   var dat;
   $(document).ready(function(){
-    var latIP = geoip_latitude();
-    var longIP = geoip_longitude();
-    dat = {
-      "description": "<h1>my position</h1>",
-      "sidebar": "",
-      "lat": ""+latIP,
-      "lng": ""+longIP,
-      "picture": "/images/blue-marker.png",
-      "width": "25",
-      "height": "35"
+    if($.find("#mapid").length != 0){
+      var latIP = geoip_latitude();
+      var longIP = geoip_longitude();
+      dat = {
+        "description": "<h1>my position</h1>",
+        "sidebar": "",
+        "lat": ""+latIP,
+        "lng": ""+longIP,
+        "picture": "/images/blue-marker.png",
+        "width": "25",
+        "height": "35"
+      }
     }
   });
 });
