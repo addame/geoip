@@ -46,6 +46,7 @@ $(function(){
     if($.find("#mapid").length != 0){
       var latIP = google.loader.ClientLocation.latitude; 
       var longIP = google.loader.ClientLocation.longitude;
+      console.log(latIP, longIP);
       dat = {
         "description": "<h1>my position</h1>",
         "sidebar": "",
