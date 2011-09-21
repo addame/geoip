@@ -44,9 +44,13 @@ $(function(){
   var dat;
   $(document).ready(function(){
     if($.find("#mapid").length != 0){
-      var latIP = google.loader.ClientLocation.latitude; 
-      var longIP = google.loader.ClientLocation.longitude;
-      console.log(latIP, longIP);
+      if(google.loader.ClientLocation){
+        var latIP = google.loader.ClientLocation.latitude; 
+        var longIP = google.loader.ClientLocation.longitude;
+      } else {
+        var latIP = 0;
+	var longIP = 0;
+      }
       dat = {
         "description": "<h1>my position</h1>",
         "sidebar": "",
