@@ -1,10 +1,12 @@
 $(function(){
   $("input#show_me").click(function(){
     $("input#radius").val('');
+    Gmaps.map.map.maxZoom = 11;
     Gmaps.map.replaceMarkers(dat);
     Gmaps.map.callback();
   });
   $("input#replace_markres").click(function(){
+    Gmaps.map.map.maxZoom = 20;
     $("input#radius").val('');
     $.getJSON("/locations", function(data){
       data.push(dat);
@@ -13,6 +15,7 @@ $(function(){
     });
   });
   $("input#set_radius").click(function(){
+    Gmaps.map.map.maxZoom = 20;
     $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: dat.lat, lng: dat.lng }, function(data){
       data.push(dat);
       Gmaps.map.replaceMarkers(data);
