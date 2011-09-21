@@ -7,7 +7,7 @@ gem 'rails', '3.1.0.rc8'
 
 gem 'sqlite3'
 gem 'therubyracer', '~> 0.9.3.beta1'
-gem 'gmaps4rails'
+gem 'gmaps4rails', :git => 'git://github.com/apneadiving/Google-Maps-for-Rails.git'
 gem 'geocoder'
 gem 'underscore'
 #for heroku

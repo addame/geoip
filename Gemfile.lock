@@ -1,6 +1,13 @@
 GIT
+  remote: git://github.com/apneadiving/Google-Maps-for-Rails.git
+  revision: 0d905ef26ffd52acf4b139f31708d505a49dcd23
+  specs:
+    gmaps4rails (1.1.6)
+      crack
+
+GIT
   remote: git://github.com/heroku/heroku.git
-  revision: 8aa0ee9d1ef9186630b2478c279b9fcb10ea54ed
+  revision: 96bcae401089833e73257917a0a8d00e7817543a
   specs:
     heroku (2.8.0)
       launchy (>= 0.3.2)
@@ -54,11 +61,9 @@ GEM
     coffee-script-source (1.1.2)
     crack (0.3.0)
     erubis (2.7.0)
-    execjs (1.2.7)
+    execjs (1.2.8)
       multi_json (~> 1.0)
     geocoder (1.0.4)
-    gmaps4rails (1.1.5)
-      crack
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.14)
@@ -136,7 +141,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   geocoder
-  gmaps4rails
+  gmaps4rails!
   heroku!
   jquery-rails
   pg
