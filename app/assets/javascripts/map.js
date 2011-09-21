@@ -26,8 +26,9 @@ $(function(){
      }
   };
   function getDsctMarker(obj){
-      var lt = Math.round(obj.latLng['Na']*10000)/10000;
-      var lg = Math.round(obj.latLng['Oa']*10000)/10000;
+      //console.log(obj.latLng);
+      var lt = Math.round(obj.latLng['Ja']*10000)/10000;
+      var lg = Math.round(obj.latLng['Ka']*10000)/10000;
       $.getJSON("/locations", function(data){
 	for ( var j = 0; j <  data.length; ++j) {
 	   var lat = Math.round(data[j].lat*10000)/10000;
