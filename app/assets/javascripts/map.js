@@ -42,8 +42,15 @@ $(function(){
 	}
       });
   }
-  function getLatLng(obj){
-  }
+  $('form').submit(function(){
+    Gmaps.map.map.maxZoom = 20;
+    $.getJSON("/locations/0/search", { radius: $("input#radius").val(), lat: dat.lat, lng: dat.lng }, function(data){
+      data.push(dat);
+      Gmaps.map.replaceMarkers(data);
+      Gmaps.map.callback();
+    });
+    return false;
+  });
   var dat;
   $(document).ready(function(){
     if($.find("#mapid").length != 0){
